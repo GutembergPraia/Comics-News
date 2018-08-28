@@ -9,6 +9,14 @@ class Usuario
   private $emailUser;
   private $senhaUser;
 
+/**
+ * [login - Resposavel por alterticar o usuario]
+ * @param  [string]     $email [email do usuario]
+ * @param  [string]     $senha [senha do usuario]
+ * @return [bollean]    [true - Usuario altenticado / false - Falha na atenticaçãp]
+ * @author Gutemberg Praia
+ * @date   2018-08-28
+ */
   public function login($email, $senha){
     $Conexao  = Conexao::getConnection();
     $query    = $Conexao->prepare("SELECT * FROM user WHERE emailUser=:email and senhaUser=:senha");
@@ -20,7 +28,7 @@ class Usuario
     }
 
     session_start();
-    
+
     echo $userName;
 
   }

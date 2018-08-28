@@ -8,7 +8,15 @@ class Conexao
 
    public static function getConnection()
    {
-     
+    if(!defined('DB_HOST'))
+    {
+      define('DB_HOST'        , "localhost");
+      define('DB_USER'        , "root");
+      define('DB_PASSWORD'    , "");
+      define('DB_NAME'        , "comicsnews");
+      define('DB_DRIVER'      , "mysql");
+    }
+
     $pdoConfig  = DB_DRIVER . ":". "Server=" . DB_HOST . ";";
     $pdoConfig .= "dbname=".DB_NAME.";";
 
