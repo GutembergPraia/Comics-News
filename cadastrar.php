@@ -17,20 +17,32 @@
   </head>
 
   <body class="text-center">
-    <form class="form-signin">
+    <form class="form-signin" method="post">
       <!--<img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
       <h1 class="h3 mb-3 font-weight-normal">Informe os dados: </h1>
       <label for="inputEmail" class="sr-only">Email</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+      <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email" required autofocus>
       <label for="inputPassword" class="sr-only">Senha</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+      <input type="password" id="inputSenha" name="inputSenha" class="form-control" placeholder="Senha" required>
       <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me"> Lembrar
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" name="btn-login">Entrar</button>
+      <button class="btn btn-lg btn-primary btn-block" onClick="window.history.back();">Voltar</button>
+      <!--<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>-->
     </form>
+
+    <?php
+
+      require_once 'php/usuario.php';
+
+      if(isset($_POST['inputEmail']) and isset($_POST['inputSenha'])){
+        $usuario = new Usuario;
+        $teste = $usuario->login($_POST['inputEmail'], $_POST['inputSenha']);
+        echo $teste;
+      }
+    ?>
   </body>
 </html>

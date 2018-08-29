@@ -8,6 +8,7 @@ class Usuario
   private $nameUser;
   private $emailUser;
   private $senhaUser;
+  private $loginUse;
 
 /**
  * [login - Respossavel por alterticar o usuario]
@@ -20,17 +21,39 @@ class Usuario
   public function login($email, $senha){
     $Conexao  = Conexao::getConnection();
     $query    = $Conexao->prepare("SELECT * FROM user WHERE emailUser=:email and senhaUser=:senha");
-    $query->execute(array(':id' => $email, ':senha' => md5($senha)));
-    $usuario_list = $query->fetchAll();
-
-    foreach ($usuario_list as $row => $usuario) {
-        $userName = $noticia['$userName'];
+    $query->execute(array(':email' => $email, ':senha' => md5($senha)));
+    $loginRetorno = "Não encontrado";
+    if ($query->fetchColumn() > 0)
+    {
+        $loginRetorno = "encontrado";
     }
 
-    session_start();
+    return $loginRetorno;
 
-    echo $userName;
+  }
 
+  /**
+   * [getLoginUse - Retorna o estado atual do login]
+   * @return [bollean]     [true - Usuario logado/ false - Usuario não logado]
+   * @author Gutemberg Praia
+   * @date   2018-08-29
+   */
+  public function getLoginUse()
+  {
+    return $this->loginUse;
+  }
+
+  /**
+   * [setLoginUse - Altera o valor do ]
+   * @param  [bollean]     $loginUse [description]
+   * @author
+   * @date   2018-08-29
+   */
+  private function setLoginUse($loginUse)
+  {
+    $this->loginUse = $loginUse;
+
+    return $this;
   }
 
 }
