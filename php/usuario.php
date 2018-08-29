@@ -10,7 +10,7 @@ class Usuario
   private $senhaUser;
 
 /**
- * [login - Resposavel por alterticar o usuario]
+ * [login - Respossavel por alterticar o usuario]
  * @param  [string]     $email [email do usuario]
  * @param  [string]     $senha [senha do usuario]
  * @return [bollean]    [true - Usuario altenticado / false - Falha na atenticaçãp]

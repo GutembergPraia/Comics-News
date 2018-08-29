@@ -23,7 +23,7 @@
             <a class="p-2 text-dark" href="#">Pricing</a>
           </nav>
         -->
-          <a class="btn btn-outline-primary" href="#">Login</a>
+          <a class="btn btn-outline-primary" href="cadastrar.php">Login</a>
       </div>
     </header>
   <?php

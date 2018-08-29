@@ -32,9 +32,9 @@ class Noticia
 
   }
 /**
- * [getNoticia d- retorna uma determina noticia]
- * @param  [int]     $id [id da noticia que sera retornada]
- * @return [obj noticia]         [retorna a noticia do $id espeficado]
+ * [getNoticia - resposavel por retorna uma determina noticia pelo id]
+ * @param  [int]     $id  [id da noticia que sera retornada]
+ * @return [obj noticia]  [retorna a noticia do $id espeficado]
  * @author Gutemberg Praia
  * @date   2018-08-28
  */
