@@ -19,12 +19,13 @@ class Conexao
 
     $pdoConfig  = DB_DRIVER . ":". "Server=" . DB_HOST . ";";
     $pdoConfig .= "dbname=".DB_NAME.";";
+    $pdoConfigCharSet = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 
     try
     {
       if(!isset($connection))
       {
-        $connection =  new PDO($pdoConfig, DB_USER, DB_PASSWORD);
+        $connection =  new PDO($pdoConfig, DB_USER, DB_PASSWORD, $pdoConfigCharSet);
         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       }
         return $connection;

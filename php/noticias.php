@@ -70,8 +70,17 @@ class Noticia
   {
     try
     {
-      $Conexao      = Conexao::getConnection();
-      $noticia_list = $Conexao->query("SELECT * FROM noticia")->fetchAll();
+      $Conexao = Conexao::getConnection();
+      $sql = 'SELECT
+                notic.titulo,
+                SUBSTRING(notic.descricao,1,80) as noticia,
+                notic.img,
+                notic.data,
+                user.nameUser as autor
+              FROM
+                noticia as notic
+              INNER JOIN user ON notic.autor=user.ID';
+      $noticia_list = $Conexao->query($sql)->fetchAll();
       return $noticia_list;
 
    }catch(Exception $e){
