@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href=".../../css/bootstrap/4.1.3/bootstrap.min.css">
+    <link rel="stylesheet" href=".../../vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+    <?php
+      require_once './vendor/autoload.php>';
+    ?>
+
 
     <title>ComicsNews</title>
   </head>
@@ -39,16 +43,15 @@
         <?php
           $noticia_list = $noticia1->getAllNoticia();
           $noticias = "";
-          if(!empty($noticia_list))
-          {
-            foreach ($noticia_list as $row => $noticia) {
-                $noticias .=
+          if (!empty($noticia_list)) {
+              foreach ($noticia_list as $row => $noticia) {
+                  $noticias .=
                 '<div class="col-md-3">
                   <div class="card mb-3 shadow-sm">
                     <img class="card-img-top" src="http://127.0.0.1/estagio%20web/ComicsNews/imagens/img_avatar1.png" alt="Card image cap">
                     <div class="card-img-overlay ">
                         <img class="rounded float-left" src=".../../imagens/site/calendar-alt-regular.svg" alt="" width="14" height="14">
-                        <p class="card-text"><small class="text-success">'.date("d/F/y",strtotime($noticia['data'])).' publicado por '.$noticia['autor'].'</small></p>
+                        <p class="card-text"><small class="text-success">'.date("d/F/y", strtotime($noticia['data'])).' publicado por '.$noticia['autor'].'</small></p>
                         <p class="card-title">'.$noticia['titulo'].'</p>
                         <p class="card-text">'.$noticia['noticia'].'...</p>
                         <div class="d-flex justify-content-between align-items-center">
@@ -60,9 +63,9 @@
                       </div>
                   </div>
                 </div>';
-            }
-          }else{
-            $noticias = 'Não temos noticias';
+              }
+          } else {
+              $noticias = 'Não temos noticias';
           }
           echo $noticias;
         ?>
@@ -73,8 +76,8 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src=".../../js/jquery/jquery-3.3.1.slim.min.js"></script>
+    <script src=".../../vendor/components/jquery/jquery.slim.min.js"></script>
     <script src=".../../js/popper/1.14.4/popper.min.js"></script>
-    <script src=".../../js/bootstrap/4.1.3/bootstrap.min.js"></script>
+    <script src=".../../vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
   </body>
 </html>
